@@ -5,7 +5,7 @@ const zlib = require('zlib')
 const app = express()
 
 const args = process.argv;
-var PORT = 3000 || process.env.PORT;
+var PORT = process.env.PORT || 3000;
 
 var BODName = [];
 var BODContent = [];
