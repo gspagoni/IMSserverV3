@@ -71,10 +71,12 @@ app.post("/v3/multipartMessage", (req,res)=>{
   var form = new multiparty.Form()
   form.parse(req, (err,fields,files)=>{
     //console.log("err ",err)
-    //console.log("fields ",JSON.parse(fields.ParameterRequest[0]).documentName)
-    const _bodname = JSON.parse(fields.ParameterRequest[0]).documentName;
+    //console.log("files ",JSON.parse(filesParameterRequest[0]).documentName)
+    //const _bodname = JSON.parse(fields.ParameterRequest[0]).documentName;
+    const _bodname = req.query.documentName
+    const _lid = req.query.logicalId
     BODName.push(_bodname)
-    console.log("Received : ",_bodname)
+    console.log("Received : %s, Lid:%s",_bodname,_lid)
     //console.log("files ",files.MessagePayload[0].path)
     // Read stream from file saved in temp folder
     var reader = fs.createReadStream(files.MessagePayload[0].path)
